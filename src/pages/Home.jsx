@@ -6,7 +6,9 @@ export default function Home() {
   const navigate = useNavigate()
   const [cards, setCards] = useState(mockCards)
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [handVisibleCardId, setHandVisibleCardId] = useState(null)
   const current = cards[currentIndex]
+  const showHand = handVisibleCardId === current?.id
 
   const handlePass = () => {
     if (currentIndex >= cards.length - 1) return
@@ -47,21 +49,53 @@ export default function Home() {
           className="rounded-card overflow-hidden bg-white shadow-card border-2 border-primary/10 flex flex-col min-h-0 flex-1"
           role="button"
           tabIndex={0}
-          onClick={() => navigate(`/profile/${current.id}`)}
           onKeyDown={(e) => e.key === 'Enter' && navigate(`/profile/${current.id}`)}
         >
-          <div className="w-full aspect-[3/4] max-h-[50vh] sm:max-h-[55vh] md:max-h-none min-h-0 flex-1 bg-[#f5f0eb] flex items-center justify-center relative overflow-hidden">
-            {current.avatarUrl ? (
+          <div
+            className="w-full aspect-[3/4] max-h-[50vh] sm:max-h-[55vh] md:max-h-none min-h-0 flex-1 bg-[#f5f0eb] flex items-center justify-center relative overflow-hidden cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onClick={(e) => {
+              e.stopPropagation()
+              setHandVisibleCardId((prev) => (prev === current.id ? null : current.id))
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.stopPropagation()
+                setHandVisibleCardId((prev) => (prev === current.id ? null : current.id))
+              }
+            }}
+          >
+            {showHand ? (
+              current.handPhotoUrl ? (
+                <img
+                  src={current.handPhotoUrl}
+                  alt="손 사진"
+                  className="w-full h-full object-contain bg-[#f5f0eb]"
+                  onError={(e) => { e.target.onerror = null; e.target.style.display = 'none'; e.target.nextElementSibling?.classList.remove('hidden') }}
+                />
+              ) : null
+            ) : null}
+            {showHand && (
+              <span className={`text-5xl sm:text-8xl ${current.handPhotoUrl ? 'hidden' : ''}`}>🖐️</span>
+            )}
+            {showHand ? null : (current.avatarUrl ? (
               <img src={current.avatarUrl} alt="" className="w-full h-full object-cover object-top" />
             ) : (
               <span className="text-5xl sm:text-8xl">👤</span>
-            )}
+            ) )}
             <div className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-white/40 backdrop-blur-md border border-white/60 text-right shadow-[0_4px_24px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.8)]">
               <span className="text-[10px] sm:text-xs font-medium text-primary leading-tight tracking-tight">이상형 부합도</span>
               <span className="text-sm sm:text-base font-bold text-primary tabular-nums">{current.compatibility}%</span>
             </div>
           </div>
-          <div className="p-3 sm:p-4 shrink-0 border-t border-primary/10">
+          <div
+            className="p-3 sm:p-4 shrink-0 border-t border-primary/10 cursor-pointer"
+            role="button"
+            tabIndex={0}
+            onClick={() => navigate(`/profile/${current.id}`)}
+            onKeyDown={(e) => e.key === 'Enter' && navigate(`/profile/${current.id}`)}
+          >
             <h2 className="text-lg sm:text-xl font-semibold text-primary">{current.nickname}, {current.age}</h2>
             <p className="text-sm text-gray-600 mt-1 line-clamp-2">
               💬 {current.intro}

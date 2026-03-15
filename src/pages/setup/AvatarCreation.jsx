@@ -41,7 +41,7 @@ export default function AvatarCreation() {
             <span className="text-8xl">👤</span>
           </div>
           <p className="text-gray-600 text-sm mt-4 text-center">
-            남들에게 보여질 때 취향도가 <span className="font-semibold text-primary">85%~95%</span> 사이로 보여져요
+            남들에게 보여질 때 이상형 부합도가 <span className="font-semibold text-primary">85%~95%</span> 사이로 보여져요
           </p>
           <button
             type="button"
@@ -64,7 +64,6 @@ export default function AvatarCreation() {
         <p className="text-gray-500 mt-0.5 text-xs">(아바타 제작 후 사진은 자동 삭제 됩니다)</p>
         <div className="mt-8">
           <div className="rounded-card border-2 border-dashed border-primary/30 p-8 text-center bg-surface/50">
-            <span className="text-4xl block mb-2">📷</span>
             <p className="text-gray-500 text-sm">얼굴 사진을 업로드해 주세요</p>
             <label className="mt-4 inline-block px-4 py-2 bg-surface text-primary text-sm font-medium rounded-button cursor-pointer">
               사진 선택
