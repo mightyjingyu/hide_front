@@ -57,7 +57,7 @@ export default function Home() {
               <span className="text-5xl sm:text-8xl">👤</span>
             )}
             <div className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-center gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-white/40 backdrop-blur-md border border-white/60 text-right shadow-[0_4px_24px_rgba(0,0,0,0.06),inset_0_1px_0_rgba(255,255,255,0.8)]">
-              <span className="text-[10px] sm:text-xs font-medium text-primary leading-tight tracking-tight">취향도</span>
+              <span className="text-[10px] sm:text-xs font-medium text-primary leading-tight tracking-tight">이상형 부합도</span>
               <span className="text-sm sm:text-base font-bold text-primary tabular-nums">{current.compatibility}%</span>
             </div>
           </div>

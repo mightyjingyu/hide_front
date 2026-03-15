@@ -9,15 +9,7 @@ export default function Onboarding() {
 
   return (
     <div className="min-h-screen bg-surface flex items-center justify-center p-4">
-      <div className="w-full max-w-md bg-white rounded-card shadow-card border-2 border-primary p-6 relative">
-        <button
-          type="button"
-          onClick={() => navigate('/login')}
-          className="absolute top-5 right-5 w-8 h-8 flex items-center justify-center text-gray-500 hover:text-primary"
-          aria-label="닫기"
-        >
-          ✕
-        </button>
+      <div className="w-full max-w-md bg-white rounded-card shadow-card border-2 border-primary p-6">
         <h1 className="text-center text-lg font-medium text-primary pt-2">HIDE</h1>
         <div className="mt-6 text-center">
           <p className="text-xl font-semibold text-primary leading-tight">

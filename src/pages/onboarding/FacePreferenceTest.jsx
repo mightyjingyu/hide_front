@@ -41,7 +41,7 @@ export default function FacePreferenceTest() {
       <div className="h-1.5 bg-surface rounded-full overflow-hidden mb-6">
         <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${progress}%` }} />
       </div>
-      <h1 className="text-xl font-semibold text-primary text-center mb-1">이상형 월드컵</h1>
+      <h1 className="text-xl font-semibold text-primary text-center mb-1">당신의 선택은?</h1>
       <p className="text-gray-500 text-sm text-center mb-6">더 마음에 드는 쪽을 선택해 주세요</p>
       <div className="flex-1 grid grid-cols-2 gap-4">
         <ChoiceCard label="A" onClick={() => handleChoice('A')} />
