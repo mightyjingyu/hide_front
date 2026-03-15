@@ -34,11 +34,17 @@ export default function HandVerification() {
             {preview ? (
               <img src={preview} alt="손 사진 미리보기" className="w-full max-h-48 object-contain rounded-lg mx-auto" />
             ) : (
-              <p className="text-gray-500 text-sm">자신의 손 사진을 업로드 해주세요</p>
+              <p className="text-gray-500 text-sm">자신의 손 사진을 찍어주세요</p>
             )}
-            <label className="mt-4 inline-block px-4 py-2 bg-primary text-white text-sm font-medium rounded-button cursor-pointer">
-              사진 업로드
-              <input type="file" accept="image/*" onChange={handleFile} className="hidden" />
+            <label className="mt-4 inline-block px-6 py-3 bg-primary text-white text-sm font-medium rounded-button cursor-pointer">
+              사진 찍기
+              <input
+                type="file"
+                accept="image/*"
+                capture="user"
+                onChange={handleFile}
+                className="hidden"
+              />
             </label>
           </div>
           <button

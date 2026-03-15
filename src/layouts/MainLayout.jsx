@@ -15,7 +15,7 @@ export default function MainLayout() {
 
   return (
     <div className="min-h-screen min-h-[100dvh] bg-white flex flex-col pb-16" style={{ paddingBottom: 'calc(4rem + env(safe-area-inset-bottom, 0px))' }}>
-      <main className="flex-1">
+      <main className="flex-1 min-h-0 flex flex-col">
         <Outlet />
       </main>
       {showNav && (

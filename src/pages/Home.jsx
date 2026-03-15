@@ -38,47 +38,51 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-surface/30 pb-4">
-      <header className="sticky top-0 z-10 bg-white/95 backdrop-blur border-b-2 border-primary px-4 py-3">
+    <div className="flex flex-col flex-1 min-h-0 bg-surface/30">
+      <header className="shrink-0 z-10 bg-white/95 backdrop-blur border-b-2 border-primary px-4 py-2.5">
         <h1 className="text-lg font-semibold text-primary">HIDE</h1>
       </header>
-      <div className="p-4 max-w-md mx-auto">
+      <div className="flex-1 min-h-0 flex flex-col p-3 sm:p-4 max-w-md mx-auto w-full overflow-hidden">
         <div
-          className="rounded-card overflow-hidden bg-white shadow-card border-2 border-primary/10"
+          className="rounded-card overflow-hidden bg-white shadow-card border-2 border-primary/10 flex flex-col min-h-0 flex-1"
           role="button"
           tabIndex={0}
           onClick={() => navigate(`/profile/${current.id}`)}
           onKeyDown={(e) => e.key === 'Enter' && navigate(`/profile/${current.id}`)}
         >
-          <div className="aspect-[3/4] bg-[#f5f0eb] flex items-center justify-center relative overflow-hidden">
+          {/* 모바일에서 아바타 높이 제한 → 한 화면에 카드+버튼+하단탭 모두 노출 */}
+          <div className="aspect-[3/4] max-h-[32vh] sm:max-h-none bg-[#f5f0eb] flex items-center justify-center relative overflow-hidden">
             {current.avatarUrl ? (
               <img src={current.avatarUrl} alt="" className="w-full h-full object-cover object-top" />
             ) : (
-              <span className="text-8xl">👤</span>
+              <span className="text-6xl sm:text-8xl">👤</span>
             )}
-            <div className="absolute top-3 right-3 flex items-center gap-2 px-3 py-2 rounded-xl bg-white/95 shadow-[0_1px_8px_rgba(0,0,0,0.08)] border border-black/5 text-right">
+            <div className="absolute top-2 right-2 sm:top-3 sm:right-3 flex items-center gap-1.5 sm:gap-2 px-2.5 py-1.5 sm:px-3 sm:py-2 rounded-xl bg-white/95 shadow-[0_1px_8px_rgba(0,0,0,0.08)] border border-black/5 text-right">
               <span className="text-[10px] font-semibold text-primary leading-tight">
                 이상형<br />일치도
               </span>
-              <span className="text-lg font-semibold text-primary tabular-nums">{current.compatibility}%</span>
+              <span className="text-base sm:text-lg font-semibold text-primary tabular-nums">{current.compatibility}%</span>
             </div>
           </div>
-          <div className="p-4">
-            <h2 className="text-xl font-semibold text-primary">{current.nickname}, {current.age}</h2>
-            <p className="text-sm text-gray-600 mt-1 flex items-center gap-1">
+          <div className="p-3 sm:p-4 shrink-0">
+            <h2 className="text-lg sm:text-xl font-semibold text-primary">{current.nickname}, {current.age}</h2>
+            <p className="text-xs sm:text-sm text-gray-600 mt-0.5 sm:mt-1 line-clamp-2">
               💬 {current.intro}
             </p>
-            <p className="text-sm text-gray-500 mt-1 flex items-center gap-1">📍 {current.region ?? current.distance}</p>
-            <div className="flex flex-wrap gap-1.5 mt-3">
-              {current.interests.map((tag) => (
-                <span key={tag} className="px-2.5 py-1 bg-surface rounded-full text-xs text-primary">
+            <p className="text-xs sm:text-sm text-gray-500 mt-0.5 flex items-center gap-1">📍 {current.region ?? current.distance}</p>
+            <div className="flex flex-wrap gap-1 mt-2 sm:mt-3">
+              {current.interests.slice(0, 4).map((tag) => (
+                <span key={tag} className="px-2 py-0.5 bg-surface rounded-full text-xs text-primary">
                   {tag}
                 </span>
               ))}
+              {current.interests.length > 4 && (
+                <span className="px-2 py-0.5 text-xs text-gray-500">+{current.interests.length - 4}</span>
+              )}
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-6 mt-8 px-2">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 mt-4 sm:mt-6 px-2 shrink-0">
           <button
             type="button"
             onClick={handlePass}
