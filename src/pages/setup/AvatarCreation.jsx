@@ -41,7 +41,7 @@ export default function AvatarCreation() {
             <span className="text-8xl">👤</span>
           </div>
           <p className="text-gray-600 text-sm mt-4 text-center">
-            남들에게 보여질 때 이상형 일치도가 <span className="font-semibold text-primary">85%~95%</span> 사이로 보여져요
+            남들에게 보여질 때 취향도가 <span className="font-semibold text-primary">85%~95%</span> 사이로 보여져요
           </p>
           <button
             type="button"
