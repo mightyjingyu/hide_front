@@ -42,16 +42,15 @@ export default function Home() {
       <header className="shrink-0 z-10 bg-white/95 backdrop-blur border-b-2 border-primary px-4 py-2">
         <h1 className="text-lg font-semibold text-primary">HIDE</h1>
       </header>
-      <div className="flex-1 min-h-0 flex flex-col px-2 sm:px-4 py-2 max-w-md mx-auto w-full overflow-hidden justify-start">
+      <div className="flex-1 min-h-0 flex flex-col px-1 sm:px-4 py-1 sm:py-2 max-w-md mx-auto w-full overflow-hidden">
         <div
-          className="rounded-card overflow-hidden bg-white shadow-card border-2 border-primary/10 flex flex-col shrink-0"
+          className="rounded-card overflow-hidden bg-white shadow-card border-2 border-primary/10 flex flex-col min-h-0 flex-1"
           role="button"
           tabIndex={0}
           onClick={() => navigate(`/profile/${current.id}`)}
           onKeyDown={(e) => e.key === 'Enter' && navigate(`/profile/${current.id}`)}
         >
-          {/* 프로필 카드 비율(3:4)에 맞게 아바타 크롭, 모바일에서 한 화면에 카드+버튼 전부 노출 */}
-          <div className="w-full aspect-[3/4] max-h-[32vh] sm:max-h-[40vh] md:max-h-none bg-[#f5f0eb] flex items-center justify-center relative overflow-hidden shrink-0">
+          <div className="w-full aspect-[3/4] max-h-[50vh] sm:max-h-[55vh] md:max-h-none min-h-0 flex-1 bg-[#f5f0eb] flex items-center justify-center relative overflow-hidden">
             {current.avatarUrl ? (
               <img src={current.avatarUrl} alt="" className="w-full h-full object-cover object-top" />
             ) : (
@@ -64,25 +63,25 @@ export default function Home() {
               <span className="text-sm sm:text-lg font-semibold text-primary tabular-nums">{current.compatibility}%</span>
             </div>
           </div>
-          <div className="p-2.5 sm:p-4 shrink-0 border-t border-primary/10">
-            <h2 className="text-base sm:text-xl font-semibold text-primary">{current.nickname}, {current.age}</h2>
-            <p className="text-xs sm:text-sm text-gray-600 mt-0.5 line-clamp-1 sm:line-clamp-2">
+          <div className="p-3 sm:p-4 shrink-0 border-t border-primary/10">
+            <h2 className="text-lg sm:text-xl font-semibold text-primary">{current.nickname}, {current.age}</h2>
+            <p className="text-sm text-gray-600 mt-1 line-clamp-2">
               💬 {current.intro}
             </p>
-            <p className="text-xs sm:text-sm text-gray-500 mt-0.5">📍 {current.region ?? current.distance}</p>
-            <div className="flex flex-wrap gap-1 mt-1.5 sm:mt-3">
-              {current.interests.slice(0, 3).map((tag) => (
+            <p className="text-sm text-gray-500 mt-0.5">📍 {current.region ?? current.distance}</p>
+            <div className="flex flex-wrap gap-1.5 mt-2 sm:mt-3">
+              {current.interests.slice(0, 4).map((tag) => (
                 <span key={tag} className="px-2 py-0.5 bg-surface rounded-full text-xs text-primary">
                   {tag}
                 </span>
               ))}
-              {current.interests.length > 3 && (
-                <span className="px-1.5 py-0.5 text-xs text-gray-500">+{current.interests.length - 3}</span>
+              {current.interests.length > 4 && (
+                <span className="px-1.5 py-0.5 text-xs text-gray-500">+{current.interests.length - 4}</span>
               )}
             </div>
           </div>
         </div>
-        <div className="flex items-center justify-center gap-3 sm:gap-6 mt-2 sm:mt-6 px-2 shrink-0 pb-1">
+        <div className="flex items-center justify-center gap-4 sm:gap-6 mt-3 sm:mt-6 px-2 shrink-0 pb-1">
           <button
             type="button"
             onClick={handlePass}
